@@ -83,7 +83,8 @@ function feeder(weight, age) {
     return foodByWeight + foodByMonths;
 }
 
-console.log(feeder(15, 1));
+console.log("Task 3:", feeder(15, 1));
+console.log("");
 
 
 /************************************************************** Task 4 **************************************************************/
@@ -94,18 +95,60 @@ console.log(feeder(15, 1));
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
 
 function game(input) {
-    var roll = none;
+    function flipSign(num) {
+        return num * -1;
+    }
+    console.log("Task 4:")
+
+    // Computer Random Choice
+    var roll = null;
     number = Math.random();
     if (number <= 0.33) {
         roll = "rock";
+        number = 0.33
     } else if (number <= 0.66) {
         roll = "paper";
+        number = 0.66;
     } else if (number <= 1) {
-        roll = "scisors";
+        roll = "scissors";
+        number = 1;
     }
 
+    // Player Input Preperation
+    playerNumber = 0;
+    if (input === "rock") {
+        playerNumber = -0.33;
+    } else if (input === "paper") {
+        playerNumber = -0.66;
+    } else if (input === "scissors") {
+        playerNumber = -1;
+    } else {
+        console.log("invalid input");
+    }
+
+    // Main Game Logic and Output
+    let output = number + playerNumber;
+
+    if (Math.abs(output) >= 0.5) {
+        output = flipSign(output);
+    }
+
+    console.log("Computer Chose:", roll);
+    console.log("Player Chose:", input);
+
+    if (output > 0) {
+        console.log("You Lose");
+    } else if (output < 0) {
+        console.log("You Win");
+    } else if (output === 0) {
+        console.log("It's A Tie");
+    }
+    console.log("");
 }
-  
+
+// Player Input
+game("scissors"); 
+
 
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
